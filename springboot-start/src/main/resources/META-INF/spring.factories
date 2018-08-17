@@ -1,0 +1,6 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.zpp.springboot.start.initializers.SimpleApplicationContextInitializer
+
+
+org.springframework.context.ApplicationListener=\
+com.zpp.springboot.start.listeners.SimpleApplicationListener

@@ -1,0 +1,1 @@
+set global wait_timeout=1814400;

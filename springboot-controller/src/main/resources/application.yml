@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: dev
+
+
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: INFO
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss:SSS}){faint} %clr(-%5p) ${PID:- } %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}:%-4L){cyan} %clr(:){faint} %m%n:-%wEx"
+

@@ -1,0 +1,24 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile (
+            "mysql:mysql-connector-java:6.0.3",
+            "org.flywaydb:flyway-core:4.0.3",
+            "commons-lang:commons-lang:2.6",
+            "org.apache.commons:commons-lang3:3.4",
+            "commons-io:commons-io:2.5",
+            "com.zaxxer:HikariCP:2.7.1",
+            "org.slf4j:slf4j-log4j12:1.7.25",
+    )
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

@@ -1,0 +1,6 @@
+spring:
+  ldap:
+    urls: ldap://ldap:389
+    base: dc=tczs,dc=local
+    username: cn=admin,dc=tczs,dc=local
+    password:

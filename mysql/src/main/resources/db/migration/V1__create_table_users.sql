@@ -1,0 +1,10 @@
+CREATE TABLE users (
+	uuid VARCHAR(64) NOT NULL COMMENT 'UUID',
+	name VARCHAR(255) NOT NULL,
+	age INTEGER NOT NULL,
+	status VARCHAR(64) NOT NULL,
+    description blob NULL,
+    attributes JSON NULL,
+    tags JSON NULL,
+	PRIMARY KEY (uuid)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '用户';

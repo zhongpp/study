@@ -1,0 +1,35 @@
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss:SSS}){faint} %clr(-%5p) ${PID:- } %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}:%-4L){cyan} %clr(:){faint} %m%n:-%wEx"
+
+qiniu:
+  url: http://od4jhik93.bkt.clouddn.com
+  accessKey: WQ-jt4x544PkZqBrOc-ao25och_Evlw_jnV7wtLl
+  secretKey: 8EBNPqhlLneUgChmpeaM9pccFg3hLQ-Lue60gxNB
+  bucketName: imagerepository
+
+sfpay:
+  notify-url: http://api-gw.sf-rush.com/transactions/%s/notify
+  wxid-notify-url: http://api-gw.sf-rush.com/requests/%s/%s?request_id=%s&
+  wxid-notify-group-url: http://api-gw.sf-rush.com/request_groups/%s/%s?request_group_id=%s
+  forward:
+    url: http://api-gw.sf-rush.com/requests/%s/is_paid
+    success: http://api-dev.sf-rush.com/static/paySuccess.html
+    failure: http://api-dev.sf-rush.com/static/payFailed.html
+    error: http://api-dev.sf-rush.com/static/redirect.html
+    access-keys:
+      - blcNtcyysu6nuW96akxnUmFaVyvtEIUd
+
+url:
+  scheduler-base: http://scheduler:8081
+
+request-detail-url: https://m-dev.sf-rush.com/requests/detail.html?uuid=%s
+merchant:
+  invitation_url: http://m-dev.sf-rush.com/requests/invitation.html?merchant_uuid=%s

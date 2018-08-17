@@ -1,0 +1,25 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile (
+            "org.springframework.boot:spring-boot-starter-web:${springBootVersion}",
+            "org.springframework.boot:spring-boot-starter:${springBootVersion}",
+            "org.springframework.boot:spring-boot-starter-test:${springBootVersion}",
+            "org.projectlombok:lombok:1.16.8",
+            "com.fasterxml.jackson.core:jackson-databind:2.8.1",
+            "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.1",
+            "org.springframework.kafka:spring-kafka:${springKafkaVersion}",
+            "org.springframework.kafka:spring-kafka-test:${springKafkaVersion}",
+    )
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

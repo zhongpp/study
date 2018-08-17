@@ -1,0 +1,21 @@
+spring:
+  redis:
+      host:
+      port: 6379
+      database: 0
+      timeout: 10000
+      default-expire: 1800
+      pool:
+        max-active: 5
+        max-wait: 10000
+        max-idle: 2
+        min-idle: 0
+        timeBetweenEvictionRunsMillis: 10000
+        minEvictableIdleTimeMillis: 10000
+        testWhileIdle: true
+        testOnBorrow: true
+        testOnCreate: true
+        testOnReturn: true
+
+  profiles:
+    active: dev

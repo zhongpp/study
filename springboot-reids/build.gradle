@@ -1,0 +1,18 @@
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile(
+            "org.springframework.boot:spring-boot-starter:${springBootVersion}",
+            "org.springframework.boot:spring-boot-starter-data-redis:${springBootVersion}",
+            'commons-io:commons-io:2.5',
+            'org.apache.commons:commons-lang3:3.4',
+    )
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

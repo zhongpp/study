@@ -1,0 +1,10 @@
+#kafka
+spring:
+  kafka:
+    bootstrap-servers: kafka:9092
+    consumer:
+      group-id: myGroup
+
+kafka:
+  topic:
+    helloworld: helloworld
