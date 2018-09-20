@@ -14,7 +14,21 @@ apply plugin: 'java'
 sourceCompatibility = 1.8
 
 repositories {
+    mavenLocal()
     mavenCentral()
+    jcenter()
+
+    maven {
+        url "http://central.maven.org/maven2/"
+    }
+
+    maven {
+        url "http://repo.spring.io/libs-release/"
+    }
+
+    maven {
+        url "http://central.maven.org/maven2/"
+    }
 }
 
 dependencies {

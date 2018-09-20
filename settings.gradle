@@ -31,4 +31,5 @@ include 'design-patterns'
 include 'dubbo-demo-api'
 include 'dubbo-demo-provider'
 include 'dubbo-demo-consumer'
+include 'quartz'
 
