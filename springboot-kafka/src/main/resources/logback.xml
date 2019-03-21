@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration scan="true" scanPeriod="3 seconds">
+
+  <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
+
+  <appender name="STDOUT"
+            class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <pattern>
+        %d{HH:mm:ss.SSS} [%thread] %-5level %logger{32} - %msg%n
+      </pattern>
+    </layout>
+  </appender>
+
+  <appender name="FILE"
+            class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>D://api.log</File>
+    <rollingPolicy
+            class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <FileNamePattern>D://api.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
+      <maxHistory>7</maxHistory>
+      <totalSizeCap>10GB</totalSizeCap>
+    </rollingPolicy>
+
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>
+        %d{HH:mm:ss,SSS} [%thread] %-5level %logger{32} - %msg%n
+      </Pattern>
+    </layout>
+  </appender>
+
+  <springProperty scope="context" name="module" source="spring.application.name"
+                  defaultValue="undefinded"/>
+  <springProperty scope="context" name="bootstrapServers" source="spring.kafka.bootstrap-servers"
+                  defaultValue="192.168.6.142:9092;192.168.6.142:9091;192.168.6.142:9093"/>
+  <appender name="KAFKA" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+    <encoder>
+      <pattern>${module} | %d | %-5level| %logger{15} - %msg</pattern>
+    </encoder>
+    <topic>logger-channel</topic>
+    <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy"/>
+    <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy"/>
+    <partition>0</partition>
+    <appendTimestamp>true</appendTimestamp>
+    <producerConfig>bootstrap.servers=${bootstrapServers}</producerConfig>
+  </appender>
+
+  <root>
+    <level value="INFO"/>
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="FILE"/>
+    <appender-ref ref="KAFKA"/>
+  </root>
+
+  <!--<include file="/tmp/logback-demo.xml"/>-->
+
+</configuration>

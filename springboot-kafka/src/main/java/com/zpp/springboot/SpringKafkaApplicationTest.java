@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class SpringKafkaApplicationTest {
 
-    private static String HELLOWORLD_TOPIC = "helloworld.t";
+    private static String HELLOWORLD_TOPIC = "MESSAGE2";
 
     @Autowired
     private Sender sender;

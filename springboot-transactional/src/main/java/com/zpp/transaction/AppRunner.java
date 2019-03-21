@@ -23,7 +23,7 @@ class AppRunner implements CommandLineRunner {
         Assert.isTrue(bookingService.findAllBookings().size() == 3,
                 "First booking should work with no problem");
         logger.info("Alice, Bob and Carol have been booked");
-        try {
+        /*try {
             bookingService.book("Chris", "Samuel");
         } catch (RuntimeException e) {
             logger.info("v--- The following exception is expect because 'Samuel' is too " +
@@ -53,7 +53,7 @@ class AppRunner implements CommandLineRunner {
         logger.info("You shouldn't see Buddy or null. null violated DB constraints, and " +
                 "Buddy was rolled back in the same TX");
         Assert.isTrue(bookingService.findAllBookings().size() == 3,
-                "'null' should have triggered a rollback");
+                "'null' should have triggered a rollback");*/
     }
 
 

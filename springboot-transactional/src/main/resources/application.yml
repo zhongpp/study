@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://mysql/test?serverTimezone=GMT&useUnicode=yes&characterEncoding=utf-8&useSSL=false
     username: root
-    password: 1qaz!QAZ
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     tomcat:
       min-idle: 5

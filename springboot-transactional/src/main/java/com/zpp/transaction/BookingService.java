@@ -2,6 +2,7 @@ package com.zpp.transaction;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,15 +20,29 @@ public class BookingService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Autowired
+    AfterTransactionOpt afterTransactionOpt;
+
     @Transactional
     public void book(String... persons) throws Exception {
         int i = 0;
         for (String person : persons) {
             logger.info("Booking " + person + " in a seat...");
             jdbcTemplate.update("insert into BOOKINGS(FIRST_NAME) values (?)", person);
-            testTransaction(i);
+            //testTransaction(i);
             i++;
         }
+        afterTransactionOpt.execute(new Runnable() {
+            @Override
+            public void run() {
+                logger.info("--after 开始执行后置操作5s....");
+                try {
+                    Thread.sleep(5*1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
     }
 

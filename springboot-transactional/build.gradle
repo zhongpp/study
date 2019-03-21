@@ -15,7 +15,9 @@ dependencies {
             "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}",
             "org.springframework.boot:spring-boot-devtools:${springBootVersion}",
             "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}",
-            "mysql:mysql-connector-java:6.0.3"
+            "mysql:mysql-connector-java:6.0.3",
+            "org.projectlombok:lombok:1.16.8",
+
 
     )
 

@@ -1,8 +1,9 @@
 package com.zpp.designpatterns.proxy;
 
-import org.assertj.core.internal.cglib.proxy.Enhancer;
-import org.assertj.core.internal.cglib.proxy.MethodInterceptor;
-import org.assertj.core.internal.cglib.proxy.MethodProxy;
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+
 
 import java.lang.reflect.Method;
 

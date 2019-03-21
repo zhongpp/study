@@ -1,6 +1,8 @@
-version '1.0-SNAPSHOT'
+plugins {
+    id 'java'
+}
 
-apply plugin: 'java'
+version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
@@ -9,8 +11,7 @@ repositories {
 }
 
 dependencies {
-
-    compile (
+    compile(
             "org.springframework.boot:spring-boot-starter-web:${springBootVersion}",
             "org.springframework.boot:spring-boot-starter:${springBootVersion}",
             "org.springframework.boot:spring-boot-starter-test:${springBootVersion}",
@@ -19,8 +20,7 @@ dependencies {
             "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.1",
             "org.springframework.kafka:spring-kafka:2.0.2.RELEASE",
             "org.springframework.kafka:spring-kafka-test:2.0.2.RELEASE",
-            "com.github.danielwegener:logback-kafka-appender:0.2.0-RC1"
+            "org.apache.kafka:kafka-clients:2.1.1",
     )
-
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

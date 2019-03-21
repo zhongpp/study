@@ -120,12 +120,12 @@ class UserStateMachineContextRepository implements StateMachineContextRepository
     private UserDao userDao;
 
     public void save(StateMachineContext<RegStatusEnum, RegEventEnum> context, String uuid) {
-        User user = userDao.findOne(uuid);
+        User user = userDao.findByUuid(uuid);
         userDao.updateUserStatus(uuid, context.getState().toString(), user.getStatus());
     }
 
     public StateMachineContext<RegStatusEnum, RegEventEnum> getContext(String uuid) {
-        User user = userDao.findOne(uuid);
+        User user = userDao.findByUuid(uuid);
         RegStatusEnum state = RegStatusEnum.valueOf(user.getStatus());
         return new DefaultStateMachineContext<RegStatusEnum, RegEventEnum>(state, null, null, new DefaultExtendedState());
     }

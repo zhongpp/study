@@ -44,7 +44,7 @@ public class KafkaSender {
 
     public static void main(String[] args) {
         logger.debug("=======生产者=======");
-        KafkaSender kafkaSender = new KafkaSender("192.168.20.17:9092");
+        KafkaSender kafkaSender = new KafkaSender("192.168.6.141:9092");
         int index = 0;
         while (true) {
             HashMap<String, Object> wrapper = new HashMap<>();

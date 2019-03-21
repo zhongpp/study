@@ -32,4 +32,8 @@ include 'dubbo-demo-api'
 include 'dubbo-demo-provider'
 include 'dubbo-demo-consumer'
 include 'quartz'
+include 'hadoop'
+include 'mybait-plus'
+include 'emqttd'
+include 'springboot-kafka2'
 

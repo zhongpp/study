@@ -7,7 +7,6 @@ task wrapper(type: Wrapper) {
 
 ext {
     springBootVersion = "2.0.2.RELEASE"
-    springKafkaVersion =  "1.2.2.RELEASE"
 }
 apply plugin: 'java'
 
