@@ -25,6 +25,7 @@ spring:
     # 获取连接时测试有效性，每次都验证连接是否可用
     testConnectionOnCheckout: false
     # QUARTZ SCHEDULER (QuartzProperties)
+##########################以下可以根据项目代码结构的情况写入到quartz.properties文件中去，注意需要去掉spring.quartz.properties前缀#############################################################
   quartz:
     #数据库方式
     job-store-type: jdbc
