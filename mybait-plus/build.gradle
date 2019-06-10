@@ -14,14 +14,19 @@ dependencies {
 
     compile (
             "org.springframework.boot:spring-boot-starter:${springBootVersion}",
-            "com.baomidou:mybatis-plus-boot-starter:3.0-RC",
+            "com.baomidou:mybatis-plus-boot-starter:3.1.1",
+            "com.baomidou:mybatis-plus:3.1.1",
             "org.projectlombok:lombok:1.16.8",
-            "mysql:mysql-connector-java:6.0.3"
-
+            "mysql:mysql-connector-java:6.0.3",
+            "org.projectlombok:lombok",
+            "com.h2database:h2",
+            "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.1",
+            "mysql:mysql-connector-java:8.0.16"
     )
 
     testCompile (
             "org.springframework.boot:spring-boot-starter-test:${springBootVersion}",
             "junit:junit:4.12",
+            "demo:mybait-plus"
     )
 }
