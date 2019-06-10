@@ -13,4 +13,4 @@ CREATE TABLE user
   PRIMARY KEY (id)
 );
 
-alter table user add likes varchar(20) generated always as (attributes->>'$.like');
+alter table user add likes varchar(20) generated always as (attributes ->>'$.like');
