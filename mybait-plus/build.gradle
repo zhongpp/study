@@ -19,7 +19,8 @@ dependencies {
             "org.projectlombok:lombok:1.16.8",
             "mysql:mysql-connector-java:6.0.3",
             "org.projectlombok:lombok",
-            "com.h2database:h2",
+            "com.h2database:h2:1.4.199",
+            "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.1",
             "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.1",
             "mysql:mysql-connector-java:8.0.16"
     )
