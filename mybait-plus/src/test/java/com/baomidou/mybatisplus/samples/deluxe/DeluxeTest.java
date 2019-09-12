@@ -1,16 +1,19 @@
 package com.baomidou.mybatisplus.samples.deluxe;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.IdUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
 
@@ -28,6 +31,10 @@ import com.baomidou.mybatisplus.samples.deluxe.model.UserPage;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DeluxeTest {
+
+    @Autowired
+    @Qualifier("acDataSource")
+    DataSource dataSource;
 
     @Resource
     private UserMapper mapper;
@@ -68,12 +75,12 @@ public class DeluxeTest {
 
 
         Map attribute = new HashMap();
-        attribute.put("sex",19);
-        attribute.put("high",170);
-        attribute.put("like","coder");
+        attribute.put("sex", 19);
+        attribute.put("high", 170);
+        attribute.put("like", "coder");
 
 
-        User u = new User().setEmail("122@qq.com").setVersion(1).setDeleted(0).setTags(tags).setAttributes(attribute);
+        User u = new User().setId(IdUtil.fastSimpleUUID()).setEmail("122@qq.com").setVersion(1).setDeleted(0).setTags(tags).setAttributes(attribute).setCreatedAt(DateUtil.tomorrow());
         mapper.insert(u);
 
         u.setAge(18);
@@ -99,5 +106,35 @@ public class DeluxeTest {
         if (!CollectionUtils.isEmpty(list)) {
             list.forEach(System.out::println);
         }
+    }
+
+
+    @Test
+    public void selectAll() {
+        List<User> list = mapper.selectAll(DateUtil.yesterday(), DateUtil.tomorrow());
+        for (User actionLog : list) {
+            System.out.println(actionLog);
+        }
+    }
+
+    @Test
+    public void createTable() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+
+        Map result = jdbcTemplate.queryForMap("SELECT count(1) FROM information_schema.TABLES WHERE table_name ='u2';");
+        System.out.println(result);
+        int size = result.get("count(1)") != null ? (Integer) result.get("count(1)") : 0;
+        if (size == 0) {
+            String sql = "CREATE TABLE u2 (`id` bigint(20) NOT NULL COMMENT '主键ID', `name` varchar(30) DEFAULT NULL COMMENT '姓名', `age` int(11) DEFAULT NULL COMMENT '年龄', `email` varchar(50) DEFAULT NULL COMMENT '邮箱', `tags` json DEFAULT NULL COMMENT '标签', `attributes` json DEFAULT NULL COMMENT '属性', `created_at` date DEFAULT NULL COMMENT '创建时间', `version` int(10) DEFAULT '1' COMMENT '乐观锁版本', `deleted` int(11) DEFAULT '1' COMMENT '逻辑删除字段',PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8";
+            jdbcTemplate.execute(sql);
+        }
+
+//        mapper.createTable("u_20190911");
+    }
+
+
+    @Test
+    public void testDate() {
+        System.out.println(DateUtil.format(DateUtil.offsetDay(DateUtil.date(), 1), "YYYYMMdd"));
     }
 }

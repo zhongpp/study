@@ -2,11 +2,17 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    schema: classpath:db/schema-h2.sql
-    data: classpath:db/data-h2.sql
-    url: jdbc:mysql://localhost:3306/mybaits-plus?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT
+#    schema: classpath:db/schema-h2.sql
+#    data: classpath:db/data-h2.sql
+    url: jdbc:mysql://localhost:3306/aclog?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT
     username: root
     password: 123456
+
+
+    ac-driver-class-name: com.mysql.cj.jdbc.Driver
+    ac-url: jdbc:mysql://localhost:3306/aclog?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT
+    ac-username: root
+    ac-password: 123456
 
 # Logger Config
 logging:

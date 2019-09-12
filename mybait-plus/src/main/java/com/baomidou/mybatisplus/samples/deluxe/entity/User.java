@@ -1,13 +1,12 @@
 package com.baomidou.mybatisplus.samples.deluxe.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.Version;
+import com.baomidou.mybatisplus.annotation.*;
 
+import com.sun.javafx.beans.IDProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +21,7 @@ import java.util.Map;
 @Accessors(chain = true)
 @TableName(resultMap = "userResultMap")
 public class User {
-    private Long id;
+    private String id;
     private String name;
     private Integer age;
     @TableField(el = "email, typeHandler=com.baomidou.mybatisplus.samples.deluxe.config.TestTypeHandler")
@@ -38,6 +37,8 @@ public class User {
 
     @Version
     private Integer version;
+
+    private Date createdAt;
 
     @TableLogic(value = "0", delval = "1")
     @TableField(select = false)

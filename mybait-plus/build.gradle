@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
 
-    compile (
+    compile(
             "org.springframework.boot:spring-boot-starter:${springBootVersion}",
             "com.baomidou:mybatis-plus-boot-starter:3.1.1",
             "com.baomidou:mybatis-plus:3.1.1",
@@ -22,10 +22,15 @@ dependencies {
             "com.h2database:h2:1.4.199",
             "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.1",
             "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.1",
-            "mysql:mysql-connector-java:8.0.16"
+            "mysql:mysql-connector-java:8.0.16",
+            "com.dangdang:sharding-jdbc-core:1.4.1",
+            "com.dangdang:sharding-jdbc-self-id-generator:1.4.1",
+            "cn.hutool:hutool-all:4.6.4",
+            "commons-dbcp:commons-dbcp:1.4"
     )
 
-    testCompile (
+
+    testCompile(
             "org.springframework.boot:spring-boot-starter-test:${springBootVersion}",
             "junit:junit:4.12",
             "demo:mybait-plus"

@@ -16,12 +16,38 @@
         </trim>
     </select>
 
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `user`(
+        `id`,`created_at`,`name`,`email`,`tags`,`attributes`
+        )
+        VALUES (
+        #{id,jdbcType=VARCHAR},
+        #{createdAt,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR,typeHandler=com.baomidou.mybatisplus.samples.deluxe.config.TestTypeHandler},
+        #{tags,jdbcType=VARCHAR,typeHandler=com.baomidou.mybatisplus.samples.deluxe.handler.ListJsonHandler},
+        #{attributes,jdbcType=VARCHAR,typeHandler=com.baomidou.mybatisplus.samples.deluxe.handler.MapJsonHandler}
+        );
+    </insert>
+
+    <select id="selectAll" resultType="com.baomidou.mybatisplus.samples.deluxe.entity.User">
+        select * from user where created_at between #{begin_date} and #{end_date}
+    </select>
+
+    <update id="createTable"  parameterType="String">
+        CREATE TABLE ${table_name} (`id` bigint(20) NOT NULL COMMENT '主键ID', `name` varchar(30) DEFAULT NULL COMMENT '姓名', `age` int(11) DEFAULT NULL COMMENT '年龄', `email` varchar(50) DEFAULT NULL COMMENT '邮箱', `tags` json DEFAULT NULL COMMENT '标签', `attributes` json DEFAULT NULL COMMENT '属性', `created_at` date DEFAULT NULL COMMENT '创建时间', `version` int(10) DEFAULT '1' COMMENT '乐观锁版本', `deleted` int(11) DEFAULT '1' COMMENT '逻辑删除字段',PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    </update>
+
+
     <!-- 通用查询映射结果 -->
     <resultMap id="userResultMap" type="com.baomidou.mybatisplus.samples.deluxe.entity.User">
-        <id column="id" property="id" />
-        <result column="tags" property="tags" typeHandler="com.baomidou.mybatisplus.samples.deluxe.handler.ListJsonHandler"/>
-        <result column="email" property="email" typeHandler="com.baomidou.mybatisplus.samples.deluxe.config.TestTypeHandler"/>
-        <result column="attributes" property="attributes" typeHandler="com.baomidou.mybatisplus.samples.deluxe.handler.MapJsonHandler"/>
+        <id column="id" property="id"/>
+        <result column="tags" property="tags"
+                typeHandler="com.baomidou.mybatisplus.samples.deluxe.handler.ListJsonHandler"/>
+        <result column="email" property="email"
+                typeHandler="com.baomidou.mybatisplus.samples.deluxe.config.TestTypeHandler"/>
+        <result column="attributes" property="attributes"
+                typeHandler="com.baomidou.mybatisplus.samples.deluxe.handler.MapJsonHandler"/>
     </resultMap>
 
 </mapper>
